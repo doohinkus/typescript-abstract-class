@@ -5,16 +5,6 @@ var Sorter = /** @class */ (function () {
     function Sorter() {
     }
     Sorter.prototype.sort = function () {
-        // const {
-        //   collection,
-        //   collection: { length },
-        // } = this;
-        // let secondIndex = 1;
-        // for (let firstIndex = 0; firstIndex < length; firstIndex++) {
-        //   if (collection.compare(firstIndex, secondIndex + firstIndex)) {
-        //     collection.swap(firstIndex, secondIndex + firstIndex);
-        //   }
-        // }
         var length = this.length;
         for (var firstIndex = 0; firstIndex < length; firstIndex++) {
             for (var secondIndex = 0; secondIndex < length - firstIndex - 1; secondIndex++) {

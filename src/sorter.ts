@@ -5,22 +5,12 @@ export interface Sortable {
 }
 
 export abstract class Sorter {
-  // constructor(public collection: Sortable) {}
+  // the methods required for this class
+  // the classes that extend this method, MUST HAVE THEIR IMPLEMENTATION OF METHODS DEFINED
   abstract compare(leftIndex: number, rightIndex: number): boolean;
   abstract swap(leftIndex: number, rightIndex: number): void;
   abstract length: number;
   sort(): void {
-    // const {
-    //   collection,
-    //   collection: { length },
-    // } = this;
-
-    // let secondIndex = 1;
-    // for (let firstIndex = 0; firstIndex < length; firstIndex++) {
-    //   if (collection.compare(firstIndex, secondIndex + firstIndex)) {
-    //     collection.swap(firstIndex, secondIndex + firstIndex);
-    //   }
-    // }
     const { length } = this;
     for (let firstIndex = 0; firstIndex < length; firstIndex++) {
       for (
