@@ -97,6 +97,7 @@ var GamePlay = /** @class */ (function (_super) {
         });
         var badRoll = results.filter(function (side) { return side !== -1; }).length < this.gameState.dice.length;
         var sum = results.reduce(function (a, b) { return a + b; }, 0);
+        var gameOver = activePlayer.player.score >= this.gameState.winningScore;
         console.log("roll: ".concat(results, " sum: ").concat(sum));
         var update;
         if (badRoll) {
@@ -108,6 +109,8 @@ var GamePlay = /** @class */ (function (_super) {
         else {
             update = {
                 score: activePlayer.player.score + sum,
+                over: gameOver,
+                start: !gameOver,
             };
         }
         this.updateGameState({
@@ -132,6 +135,7 @@ var GameFactory = /** @class */ (function () {
             dice: this.dice,
             start: true,
             over: false,
+            winningScore: 20,
         });
     };
     return GameFactory;

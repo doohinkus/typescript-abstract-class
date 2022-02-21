@@ -19,7 +19,10 @@ const pigDice = new GameFactory(
       turn: false,
     },
   ],
-  [{ sides: 6, badSide: 1 }]
+  [
+    { sides: 6, badSide: 1 },
+    { sides: 6, badSide: 1 },
+  ]
 );
 console.log(pigDice);
 const game = pigDice.makeGame();

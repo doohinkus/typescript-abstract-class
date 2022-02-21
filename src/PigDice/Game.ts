@@ -6,6 +6,7 @@ type gameState = {
   dice: dice[];
   start: boolean;
   over: boolean;
+  winningScore: number;
 };
 
 interface GameActions {
@@ -97,6 +98,7 @@ class GamePlay extends Game implements GameActions {
     const badRoll =
       results.filter((side) => side !== -1).length < this.gameState.dice.length;
     const sum: number = results.reduce((a, b) => a + b, 0);
+    const gameOver = activePlayer.player.score >= this.gameState.winningScore;
     console.log(`roll: ${results} sum: ${sum}`);
     let update: any;
     if (badRoll) {
@@ -107,6 +109,8 @@ class GamePlay extends Game implements GameActions {
     } else {
       update = {
         score: activePlayer.player.score + sum,
+        over: gameOver,
+        start: !gameOver,
       };
     }
     this.updateGameState({
@@ -131,6 +135,7 @@ export class GameFactory {
       dice: this.dice,
       start: true,
       over: false,
+      winningScore: 20,
     });
   }
 }
