@@ -40,7 +40,10 @@ class GamePlay extends Game implements GameActions {
     console.log("start", JSON.stringify(this.gameState));
   }
   endGame(): void {
-    throw new Error("Method not implemented.");
+    this.updateGameState({
+      over: true,
+      start: false,
+    });
   }
   getGameState() {
     return this.gameState;
@@ -48,7 +51,7 @@ class GamePlay extends Game implements GameActions {
   nextPlayerIndex(): number {
     const activePlayerIndex = this.findActivePlayer().index;
     let nextPlayerIndex: number = 0;
-    if (activePlayerIndex < this.gameState.players.length - 1) {
+    if (activePlayerIndex < this.gameState.players.length) {
       nextPlayerIndex = activePlayerIndex + 1;
     }
     return nextPlayerIndex;
@@ -101,6 +104,7 @@ class GamePlay extends Game implements GameActions {
     const gameOver = activePlayer.player.score >= this.gameState.winningScore;
     console.log(`roll: ${results} sum: ${sum}`);
     let update: any;
+    if (gameOver) this.endGame();
     if (badRoll) {
       update = {
         turn: false,
@@ -109,8 +113,6 @@ class GamePlay extends Game implements GameActions {
     } else {
       update = {
         score: activePlayer.player.score + sum,
-        over: gameOver,
-        start: !gameOver,
       };
     }
     this.updateGameState({
