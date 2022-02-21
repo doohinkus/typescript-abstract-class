@@ -1,11 +1,26 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-var SortStrategyPattern_1 = require("./SortStrategyPattern");
-SortStrategyPattern_1.linkedList.add(100);
-SortStrategyPattern_1.linkedList.add(120);
-SortStrategyPattern_1.linkedList.add(10);
-SortStrategyPattern_1.linkedList.add(0);
-SortStrategyPattern_1.linkedList.add(123);
-SortStrategyPattern_1.linkedList.add(27);
-SortStrategyPattern_1.linkedList.sort();
-SortStrategyPattern_1.linkedList.print();
+var Game_1 = require("./PigDice/Game");
+// linkedList.add(100);
+// linkedList.add(120);
+// linkedList.add(10);
+// linkedList.add(0);
+// linkedList.add(123);
+// linkedList.add(27);
+// linkedList.sort();
+// linkedList.print();
+var pigDice = new Game_1.GameFactory([
+    {
+        name: "jim",
+        score: 0,
+        id: 0,
+        turn: false,
+    },
+], [{ sides: 6, badSide: 1 }]);
+console.log(pigDice);
+var game = pigDice.makeGame();
+game.startGame();
+game.rollDice();
+// console.log("after:::", JSON.stringify(game.getGameState()));
+// jk
+// console.log(JSON.stringify(game.getGameState()));

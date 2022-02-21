@@ -5,7 +5,8 @@
   "scripts": {
     "start:build": "tsc -w",
     "start:run": "nodemon ./build/index.js",
-    "start": "concurrently npm:start:*"
+    "start": "concurrently npm:start:*",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -14,5 +15,10 @@
   "dependencies": {
     "concurrently": "^6.2.0",
     "nodemon": "^2.0.9"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.4.0",
+    "jest": "^27.5.1",
+    "ts-jest": "^27.1.3"
   }
 }
