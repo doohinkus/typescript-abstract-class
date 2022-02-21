@@ -51,7 +51,10 @@ var GamePlay = /** @class */ (function (_super) {
         console.log("start", JSON.stringify(this.gameState));
     };
     GamePlay.prototype.endGame = function () {
-        throw new Error("Method not implemented.");
+        this.updateGameState({
+            over: true,
+            start: false,
+        });
     };
     GamePlay.prototype.getGameState = function () {
         return this.gameState;
@@ -59,7 +62,7 @@ var GamePlay = /** @class */ (function (_super) {
     GamePlay.prototype.nextPlayerIndex = function () {
         var activePlayerIndex = this.findActivePlayer().index;
         var nextPlayerIndex = 0;
-        if (activePlayerIndex < this.gameState.players.length - 1) {
+        if (activePlayerIndex < this.gameState.players.length) {
             nextPlayerIndex = activePlayerIndex + 1;
         }
         return nextPlayerIndex;
@@ -100,6 +103,8 @@ var GamePlay = /** @class */ (function (_super) {
         var gameOver = activePlayer.player.score >= this.gameState.winningScore;
         console.log("roll: ".concat(results, " sum: ").concat(sum));
         var update;
+        if (gameOver)
+            this.endGame();
         if (badRoll) {
             update = {
                 turn: false,
@@ -109,8 +114,6 @@ var GamePlay = /** @class */ (function (_super) {
         else {
             update = {
                 score: activePlayer.player.score + sum,
-                over: gameOver,
-                start: !gameOver,
             };
         }
         this.updateGameState({

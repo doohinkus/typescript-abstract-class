@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var observer_1 = require("./observer");
+var JSTimesOnline = new observer_1.JSTimes();
+var jim = new observer_1.JSTimesReader("jim");
+var karen = new observer_1.JSTimesReader("karen");
+JSTimesOnline.subscribe(jim);
+JSTimesOnline.subscribe(karen);
+JSTimesOnline.notifySubscribers({ news: "Module Federation!" });
+JSTimesOnline.notifySubscribers({ news: "Dynamic modules!!!" });

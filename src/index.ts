@@ -1,15 +1,6 @@
 import { linkedList } from "./SortStrategyPattern";
 import { GameFactory } from "./PigDice/Game";
-
-// linkedList.add(100);
-// linkedList.add(120);
-// linkedList.add(10);
-// linkedList.add(0);
-// linkedList.add(123);
-// linkedList.add(27);
-
-// linkedList.sort();
-// linkedList.print();
+import { JSTimesReader, JSTimes } from "./Observer/observer";
 const pigDice = new GameFactory(
   [
     {
@@ -25,10 +16,18 @@ const pigDice = new GameFactory(
   ],
   20
 );
-console.log(pigDice);
-const game = pigDice.makeGame();
-game.startGame();
-game.rollDice();
+// console.log(pigDice);
+// const game = pigDice.makeGame();
+// game.startGame();
+// game.rollDice();
 // console.log("after:::", JSON.stringify(game.getGameState()));
 // jk
 // console.log(JSON.stringify(game.getGameState()));
+const JSTimesOnline = new JSTimes();
+const jim = new JSTimesReader("jim");
+const karen = new JSTimesReader("karen");
+
+JSTimesOnline.subscribe(jim);
+JSTimesOnline.subscribe(karen);
+JSTimesOnline.notifySubscribers({ news: "Module Federation!" });
+JSTimesOnline.notifySubscribers({ news: "Dynamic modules!!!" });
