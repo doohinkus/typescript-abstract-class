@@ -2,6 +2,7 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 var Game_1 = require("./PigDice/Game");
 var observer_1 = require("./Observer/observer");
+var removeDupilcates_1 = require("./Strategy/removeDupilcates");
 var pigDice = new Game_1.GameFactory([
     {
         name: "jim",
@@ -27,3 +28,8 @@ JSTimesOnline.subscribe(jim);
 JSTimesOnline.subscribe(karen);
 JSTimesOnline.notifySubscribers({ news: "Module Federation!" });
 JSTimesOnline.notifySubscribers({ news: "Dynamic modules!!!" });
+var sample = new removeDupilcates_1.UniqueArray([1, 2, 3, 2, 1, 4, 5, 4]);
+sample.setRemoveDuplicatesBehavior(new removeDupilcates_1.ImperativeStrategy());
+sample.removeDuplicates();
+sample.setRemoveDuplicatesBehavior(new removeDupilcates_1.FunctionalStrategy());
+sample.removeDuplicates();

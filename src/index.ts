@@ -1,6 +1,11 @@
 import { linkedList } from "./SortStrategyPattern";
 import { GameFactory } from "./PigDice/Game";
 import { JSTimesReader, JSTimes } from "./Observer/observer";
+import {
+  UniqueArray,
+  ImperativeStrategy,
+  FunctionalStrategy,
+} from "./Strategy/removeDupilcates";
 const pigDice = new GameFactory(
   [
     {
@@ -31,3 +36,10 @@ JSTimesOnline.subscribe(jim);
 JSTimesOnline.subscribe(karen);
 JSTimesOnline.notifySubscribers({ news: "Module Federation!" });
 JSTimesOnline.notifySubscribers({ news: "Dynamic modules!!!" });
+
+const sample = new UniqueArray([1, 2, 3, 2, 1, 4, 5, 4]);
+
+sample.setRemoveDuplicatesBehavior(new ImperativeStrategy());
+sample.removeDuplicates();
+sample.setRemoveDuplicatesBehavior(new FunctionalStrategy());
+sample.removeDuplicates();
