@@ -128,14 +128,18 @@ class GamePlay extends Game implements GameActions {
 }
 
 export class GameFactory {
-  constructor(public players: player[], public dice: dice[]) {}
+  constructor(
+    public players: player[],
+    public dice: dice[],
+    public winningScore: number
+  ) {}
   makeGame() {
     return new GamePlay({
       players: this.players,
       dice: this.dice,
       start: true,
       over: false,
-      winningScore: 20,
+      winningScore: this.winningScore,
     });
   }
 }

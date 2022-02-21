@@ -19,7 +19,7 @@ var pigDice = new Game_1.GameFactory([
 ], [
     { sides: 6, badSide: 1 },
     { sides: 6, badSide: 1 },
-]);
+], 20);
 console.log(pigDice);
 var game = pigDice.makeGame();
 game.startGame();

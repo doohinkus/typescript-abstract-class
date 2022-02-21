@@ -22,7 +22,8 @@ const pigDice = new GameFactory(
   [
     { sides: 6, badSide: 1 },
     { sides: 6, badSide: 1 },
-  ]
+  ],
+  20
 );
 console.log(pigDice);
 const game = pigDice.makeGame();

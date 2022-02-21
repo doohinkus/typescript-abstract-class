@@ -125,9 +125,10 @@ var GamePlay = /** @class */ (function (_super) {
     return GamePlay;
 }(Game));
 var GameFactory = /** @class */ (function () {
-    function GameFactory(players, dice) {
+    function GameFactory(players, dice, winningScore) {
         this.players = players;
         this.dice = dice;
+        this.winningScore = winningScore;
     }
     GameFactory.prototype.makeGame = function () {
         return new GamePlay({
@@ -135,7 +136,7 @@ var GameFactory = /** @class */ (function () {
             dice: this.dice,
             start: true,
             over: false,
-            winningScore: 20,
+            winningScore: this.winningScore,
         });
     };
     return GameFactory;
